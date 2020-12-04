@@ -1,6 +1,8 @@
 /* Setting up Sequelize and connecting to the currently-running database process. {logging: false} turns off the output of SQL command text of each query made to the database (after calling .sync) */
 const Sequelize = require("sequelize");
-const db = new Sequelize("postgres://localhost:5432/movie-data-app", {
+const databaseUrl =
+  process.env.DATABASE_URL || "postgres://localhost:5432/movie-data-app";
+const db = new Sequelize(databaseUrl, {
   logging: false,
 });
 
